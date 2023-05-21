@@ -4,9 +4,9 @@ from firebase_admin import credentials, initialize_app
 cred = credentials.Certificate("api/Key.json")
 default_app = initialize_app(cred)
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = '1234monirabc'
+def create_app(test_config=None):
+    app = Flask(__name__, instance_relative_config=True)
+    app.config['SECRET_KEY'] = 'dev'
 
     from .userApi import userApi
 
