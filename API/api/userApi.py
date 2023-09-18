@@ -25,7 +25,12 @@ def read():
         return f'An Error occured: {e}'
     
 
-# @userApi.route('/update', methods = ['POST'])
-# def update():
-#     try:
-        
+@userApi.route('/update', methods = ['POST'])
+def update():
+    try:
+        docId = request.get_data
+
+        user_ref.document(id.hex).set(request.json)
+        return jsonify({"success": True}), 200
+    except Exception as e:
+        return f'An Error occured: {e}'
