@@ -33,16 +33,15 @@ def nonDivisibleSubset(k, s):
     rem_count = [0] * k
     for num in s:
         rem_count[num % k] += 1
-    print(rem_count)
-    # result = 0
-    # if rem_count[0] > 0:
-    #     result += 1
-    # for i in range(1, k // 2 + 1):
-    #     if i != k - i:
-    #         result += max(rem_count[i], rem_count[k - i])
-    #     else:
-    #         result += 1
-    # return result
+    result = 0
+    if rem_count[0] > 0:
+        result += 1
+    for i in range(1, k // 2 + 1):
+        if i != k - i:
+            result += max(rem_count[i], rem_count[k - i])
+        else:
+            result += 1
+    return result
 
 
 if __name__ == '__main__':
