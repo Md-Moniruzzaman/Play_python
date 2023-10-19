@@ -55,14 +55,14 @@ def queensAttack(n, k, r_q, c_q, obstacles):
 
     for i in range(1, n+1):
         if r_q>=c_q:
-            if c_q - i >=1 and c_q+i<=n:
+            if c_q - i >=1:
                 if [r_q -i, c_q-i] in obstacles:
                     break
                 ls.append([r_q -i, c_q-i])#down to left
 
     for i in range(1, n+1):
         if r_q>=c_q:
-            if c_q - i >=1 and c_q+i<=n:
+            if  c_q+i<=n:
                 if [r_q -i, c_q+i] in obstacles:
                     break
                 ls.append([r_q -i, c_q+i])#down to right
@@ -83,14 +83,14 @@ def queensAttack(n, k, r_q, c_q, obstacles):
 
     for i in range(1, n+1):
         if r_q<c_q:
-             if r_q >=1 and r_q<=n:
+             if r_q -i >=1:
                 if [r_q -i, c_q-i] in obstacles:
                     break
                 ls.append([r_q -i, c_q-i])#down to left
 
     for i in range(1, n+1):
         if r_q<c_q:
-             if r_q >=1 and r_q<=n:
+             if  c_q+i<=n:
                 if [r_q -i, c_q+i] in obstacles:
                     break
                 ls.append([r_q -i, c_q+i])#down to right
