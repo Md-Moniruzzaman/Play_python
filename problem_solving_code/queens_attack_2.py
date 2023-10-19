@@ -71,7 +71,6 @@ def queensAttack(n, k, r_q, c_q, obstacles):
                     upright = row-r_q-1
 
     total = left + right + up + down + upleft + upright + downleft + downright
-    print(total)
     return total
 
 
