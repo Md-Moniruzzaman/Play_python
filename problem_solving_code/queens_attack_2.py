@@ -19,100 +19,62 @@ import sys
 #
 
 def queensAttack(n, k, r_q, c_q, obstacles):
-    # Write your code here
-    ls = []
-    for i in range(c_q, 0, -1):
-        if [r_q,i] in obstacles:
-            break
-        ls.append([r_q,i])
-    for i in range(c_q+1, n+1):
-        if [r_q,i] in obstacles:
-            break
-        ls.append([r_q,i])
+    # without obstacles
+    left =  c_q-1
+    right = n - c_q
+    up = n - r_q
+    down = r_q - 1
+    upleft = left if left<=up else up
+    upright = right if right<=up else up
+    downleft = left if left<=down else down
+    downright = right if right<=down else down
 
-    for i in range(r_q, 0,-1):
-        if [i,c_q] in obstacles:
-            break
-        ls.append([i,c_q])
+    # with obstacles
+    for obs in obstacles:
+        row = obs[0]
+        col = obs[1]
 
-    for i in range(r_q+1, n+1):
-        if [i,c_q] in obstacles:
-            break
-        ls.append([i,c_q])
-    
-    for i in range(1, n+1):
-        if r_q>=c_q:
-            if r_q +i <=n:
-                if [r_q+i, c_q+i] in obstacles:
-                    break
-                ls.append([r_q+i, c_q+i])#top to right 
-    for i in range(1, n+1):
-        if r_q>=c_q:
-            if r_q +i <=n:
-                if [r_q+i, c_q-i] in obstacles:
-                    break
-                ls.append([r_q+i, c_q-i])#top to left
+        if row == r_q and col<c_q:
+            if c_q-col-1<left:
+                left = c_q-col-1
 
-    for i in range(1, n+1):
-        if r_q>=c_q:
-            if c_q - i >=1:
-                if [r_q -i, c_q-i] in obstacles:
-                    break
-                ls.append([r_q -i, c_q-i])#down to left
+        elif row == r_q and col>c_q:
+            if col-c_q-1<right:
+                right=col-c_q-1
+        
+        elif col == c_q and row<r_q:
+            if r_q-row-1<down:
+                down = r_q-row-1
 
-    for i in range(1, n+1):
-        if r_q>=c_q:
-            if  c_q+i<=n:
-                if [r_q -i, c_q+i] in obstacles:
-                    break
-                ls.append([r_q -i, c_q+i])#down to right
+        elif col == c_q and row>r_q:
+            if row-r_q-1<up:
+                up = row-r_q-1
 
-    for i in range(1, n+1):
-        if r_q<c_q:
-             if c_q +i <=n:
-                if [r_q+i, c_q+i] in obstacles:
-                    break
-                ls.append([r_q+i, c_q+i])#top to right
+        elif row<r_q and col<c_q:
+            if r_q-row == c_q-col:
+                if r_q-row-1<downleft:
+                    downleft = r_q-row-1
 
-    for i in range(1, n+1):
-        if r_q<c_q:
-             if c_q +i <=n:
-                if [r_q+i, c_q-i] in obstacles:
-                    break
-                ls.append([r_q+i, c_q-i])#top to left
+        elif row <r_q and col>c_q:
+            if r_q - row == col-c_q:
+                if r_q-row-1<downright:
+                    downright = r_q-row -1
 
-    for i in range(1, n+1):
-        if r_q<c_q:
-             if r_q -i >=1:
-                if [r_q -i, c_q-i] in obstacles:
-                    break
-                ls.append([r_q -i, c_q-i])#down to left
+        elif row>r_q and col<c_q:
+            if row-r_q == c_q-col:
+                if row-r_q-1<upleft:
+                    upleft = row-r_q-1
 
-    for i in range(1, n+1):
-        if r_q<c_q:
-             if  c_q+i<=n:
-                if [r_q -i, c_q+i] in obstacles:
-                    break
-                ls.append([r_q -i, c_q+i])#down to right
+        elif row>r_q and col>c_q:
+            if row-r_q == col-c_q:
+                if row-r_q-1<upright:
+                    upright = row-r_q-1
 
-    
-    for i in range(n,0,-1):
-        if r_q and c_q == n:
-            if [i, i] in obstacles:
-                break
-            ls.append([i,i])
+    total = left + right + up + down + upleft + upright + downleft + downright
+    print(total)
+    return total
 
-       
-    temp = []
-    for i in ls:
-        if i not in temp:
-            temp.append(i)
-       
-       
-    temp.remove([r_q,c_q])
-    print(temp)
-    print(len(temp))
-    return len(temp)
+
 
 if __name__ == '__main__':
    
@@ -147,11 +109,106 @@ if __name__ == '__main__':
 
 
 
+# def queensAttack(n, k, r_q, c_q, obstacles):#80%
+#     # Write your code here
+#     ls = []
+#     for i in range(c_q, 0, -1):
+#         if [r_q,i] in obstacles:
+#             break
+#         ls.append([r_q,i])
+#     for i in range(c_q+1, n+1):
+#         if [r_q,i] in obstacles:
+#             break
+#         ls.append([r_q,i])
+
+#     for i in range(r_q, 0,-1):
+#         if [i,c_q] in obstacles:
+#             break
+#         ls.append([i,c_q])
+
+#     for i in range(r_q+1, n+1):
+#         if [i,c_q] in obstacles:
+#             break
+#         ls.append([i,c_q])
+    
+#     for i in range(1, n+1):
+#         if r_q>=c_q:
+#             if r_q +i <=n:
+#                 if [r_q+i, c_q+i] in obstacles:
+#                     break
+#                 ls.append([r_q+i, c_q+i])#top to right 
+#     for i in range(1, n+1):
+#         if r_q>=c_q:
+#             if r_q +i <=n:
+#                 if [r_q+i, c_q-i] in obstacles:
+#                     break
+#                 ls.append([r_q+i, c_q-i])#top to left
+
+#     for i in range(1, n+1):
+#         if r_q>=c_q:
+#             if c_q - i >=1:
+#                 if [r_q -i, c_q-i] in obstacles:
+#                     break
+#                 ls.append([r_q -i, c_q-i])#down to left
+
+#     for i in range(1, n+1):
+#         if r_q>=c_q:
+#             if  c_q+i<=n:
+#                 if [r_q -i, c_q+i] in obstacles:
+#                     break
+#                 ls.append([r_q -i, c_q+i])#down to right
+
+#     for i in range(1, n+1):
+#         if r_q<c_q:
+#              if c_q +i <=n:
+#                 if [r_q+i, c_q+i] in obstacles:
+#                     break
+#                 ls.append([r_q+i, c_q+i])#top to right
+
+#     for i in range(1, n+1):
+#         if r_q<c_q:
+#              if c_q +i <=n:
+#                 if [r_q+i, c_q-i] in obstacles:
+#                     break
+#                 ls.append([r_q+i, c_q-i])#top to left
+
+#     for i in range(1, n+1):
+#         if r_q<c_q:
+#              if r_q -i >=1:
+#                 if [r_q -i, c_q-i] in obstacles:
+#                     break
+#                 ls.append([r_q -i, c_q-i])#down to left
+
+#     for i in range(1, n+1):
+#         if r_q<c_q:
+#              if  c_q+i<=n:
+#                 if [r_q -i, c_q+i] in obstacles:
+#                     break
+#                 ls.append([r_q -i, c_q+i])#down to right
+
+    
+#     for i in range(n,0,-1):
+#         if r_q and c_q == n:
+#             if [i, i] in obstacles:
+#                 break
+#             ls.append([i,i])
+
+       
+#     temp = []
+#     for i in ls:
+#         if i not in temp:
+#             temp.append(i)
+       
+       
+#     temp.remove([r_q,c_q])
+#     print(temp)
+#     print(len(temp))
+#     return len(temp)
+# # 
 
 
 
-
-# def queensAttack(n, k, r_q, c_q, obstacles):
+# def queensAttack(n, k, r_q, c_q, obstacles):#50%
 #     # Write your code here
 #     ls = []
 #     for i in range(c_q, 0, -1):
