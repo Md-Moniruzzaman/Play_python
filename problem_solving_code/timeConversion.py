@@ -31,7 +31,6 @@ def timeConversion(s):
     new_s = s
     if 'AM' in new_s and '12' in new_s[0:2]:
         new_s = new_s.replace(new_s[:2], '00')
-        print(new_s)
         return new_s[:-2]
     if 'PM' in new_s and '12' in new_s[:2]:
         return s[:-2]
@@ -41,8 +40,6 @@ def timeConversion(s):
         return new_s[:-2]
     else:
         return s[:-2]
-
-    return s
 
 if __name__ == '__main__':
     
