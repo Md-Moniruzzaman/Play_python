@@ -41,6 +41,26 @@ def workbook(n, k, arr):
     return special_problem
              
 
+# def workbook(n, k, arr):
+#     pages = [i for i in range(1, sum(math.ceil(i / k) for i in arr) + 1)]
+#     prob_list = []
+#     special_count = 0
+#     for i in arr:
+#         for j in range(math.ceil(i / k)):
+#             if i > k:
+#                 prob_list.append([a + j * k for a in range(1, k + 1)])
+#                 i -= k
+#             else:
+#                 prob_list.append([a + j * k for a in range(1, i + 1)])
+#     book = dict(zip(pages, prob_list))
+   
+#     for page, problems in book.items():
+#         for problem in problems:
+#             if problem == page:
+#                 special_count += 1
+#     return special_count
+
+
 if __name__ == '__main__':
    
 
