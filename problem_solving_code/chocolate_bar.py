@@ -14,7 +14,6 @@ def chocolateFeast(n, c, m):
     # Write your code here
     bar = n//c
     wrp = n//c
-    print(f'bar: {bar}')
     while wrp >=m:
         new_bar = wrp//m
         bar+=new_bar
