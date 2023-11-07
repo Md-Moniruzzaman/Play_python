@@ -47,7 +47,7 @@ obj = Myclass(10)
 
 obj.instance_method()
 
-print(obj.my_var)
+# print(obj.my_var)
 # Output is 30
 
 # 6. list remove item when have duplicate value
@@ -55,3 +55,20 @@ g = [1,2,3,2,5]
 g.remove(2)
 # print(g)
 # output [1,3,2,5]
+
+# 6. What will be the output
+
+for num in range(10):
+    if num<5:
+        continue
+    elif num>8:
+        break
+    # print(num, end=' ')
+# Output is 5,6,7,8
+
+x = 'abcdef'
+i = 'i'
+while i in x:
+    print(i, end=' ')
+
+# No output
