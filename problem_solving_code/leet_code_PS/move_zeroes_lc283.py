@@ -6,6 +6,7 @@ def moveZeroes(nums: list[int])-> None:
             nums[j] = nums[i]
             nums[i] = val
             j+=1
+            print(nums)
         
     print(nums)
     
