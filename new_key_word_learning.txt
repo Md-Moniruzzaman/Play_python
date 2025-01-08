@@ -1,6 +1,6 @@
 batch master = 
 TBA = to be continue.
-GR/IR (Mrep) = Good receipt/Invoice receipt.
+GR/IR (Mrep) = Goods receipt/Invoice receipt.
 
 jira jazra... - Full exploar through Jira
 
