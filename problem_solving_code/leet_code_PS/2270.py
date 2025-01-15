@@ -4,10 +4,12 @@
 
 class Solution:
     def waysToSplitArray(self, nums: list[int]) -> int:
+        total_sum = sum(nums)
         cnt = 0
         for i in range(1, len(nums)):
             print(nums[:i], nums[i:])
-            if sum(nums[:i]) >= sum(nums[i:]):
+            val = sum(nums[:i])
+            if val >= total_sum - val:
                 cnt += 1
         return cnt
         
