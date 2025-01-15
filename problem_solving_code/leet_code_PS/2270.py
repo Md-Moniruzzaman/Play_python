@@ -4,12 +4,12 @@
 
 class Solution:
     def waysToSplitArray(self, nums: list[int]) -> int:
-        total_sum = sum(nums)
-        pre = [0]
-        cnt = 0
-        for i in range(len(nums)-1):
-            pre.append(pre[-1] + nums[i])
-            if pre[-1] >= total_sum - pre[-1]:
+        left_sum, right_sum = 0, sum(nums)
+        n, cnt = len(nums), 0
+        for i in nums[:n-1]:
+            left_sum += i
+            right_sum -= i
+            if left_sum >= right_sum:
                 cnt += 1
         return cnt
         
