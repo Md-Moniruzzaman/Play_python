@@ -7,16 +7,14 @@ from collections import Counter
 
 class Solution:
     def countPalindromicSubsequence(self, s: str) -> int:
-        res = set()
-        left_char = set()
-        right_char = Counter(s)
-        for m in s:
-            right_char[m] -= 1
-            for c in left_char:
-                if right_char[c] > 0:
-                    res.add(c + m + c)
-            left_char.add(m)
-        return len(res)
+        char = set(s)
+        pal_cnt = 0
+        for c in char:
+            left_index = s.index(c)
+            right_index = s.rindex(c)
+            unique_substr = set(s[left_index+1:right_index])
+            pal_cnt += len(unique_substr)
+        return pal_cnt
         
 s = Solution()
 print(s.countPalindromicSubsequence("aabca")) # 3
