@@ -11,7 +11,7 @@ A subarray [numsl, numsl+1, ..., numsr-1, numsr] is ascending if for all i where
 
 
 class Solution:
-    def maxAscendingSum(self, nums: List[int]) -> int:
+    def maxAscendingSum(self, nums: list[int]) -> int:
         n = len(nums)
         if n == 0:
             return 0
