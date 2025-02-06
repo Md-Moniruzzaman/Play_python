@@ -34,3 +34,7 @@ def tupleSameProduct(nums: list[int]) -> int:
     return total_count
 
 print(tupleSameProduct([1,2,4,5,10]))
+print(tupleSameProduct([2,4,5,10]))
+print(tupleSameProduct([2,4,5,10,23,16]))
+print(tupleSameProduct([2,4,5,10,23,16,20,50,90]))
+print(tupleSameProduct([200,444,555,666,777,888,999,1000]))
