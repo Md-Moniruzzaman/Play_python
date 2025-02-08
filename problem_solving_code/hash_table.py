@@ -31,6 +31,7 @@ class Hash(object):
 
     # function to display hash table
     def displayHash(self):
+        print(self.__table)
         for i in range(self.__bucket):
             print("[%d]" % i, end='')
             for x in self.__table[i]:
@@ -41,7 +42,7 @@ class Hash(object):
 # Drive Program
 if __name__ == "__main__":
     # array that contains keys to be mapped
-    a = [15, 11, 27, 8, 12]
+    a = [15, 11, 27, 8, 12, 22]
 
     # Create a empty has of BUCKET_SIZE
     h = Hash(BUCKET_SIZE)
@@ -51,6 +52,6 @@ if __name__ == "__main__":
         h.insertItem(x)
 
     # delete 12 from the hash table
-    h.deleteItem(x)
+    # h.deleteItem(x)
     # Display the hash table
     h.displayHash()
