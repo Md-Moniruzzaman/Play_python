@@ -29,7 +29,7 @@ print(maximumSum([10,12,19,14]))
 
 import heapq
 class Solution:
-    def maximumSum(self, nums: List[int]) -> int:
+    def maximumSum(self, nums: list[int]) -> int:
         def calculateDigitSum(num):
             sumDigit = 0
             while(num>0):
@@ -54,7 +54,7 @@ class Solution:
     
     
 class Solution2:
-    def maximumSum(self, nums: List[int]) -> int:
+    def maximumSum(self, nums: list[int]) -> int:
         d, mx = dict(), -1
 
         for num in nums:
