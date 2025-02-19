@@ -5,10 +5,10 @@ def print_receipt():
         printer = Network("10.168.122.179", 9100)  # Replace with your printer's IP
 
         # Print image at the top (Use a BMP file instead of ICO)
-        # printer.image(r"D:\Tfl_data_hub\dist\PH_logo.png")  # Replace with your BMP image path
+        # printer.image(r"D:\Tfl_data_hub\logo_kfc.bmp")  # Replace with your BMP image path
 
         # Set alignment to center
-        printer.set(align='center', double_width=True,double_height=True, bold= True)
+        printer.set(align='center',  bold= True)
 
         # Print text in the center
         printer.text("KFC\n")
