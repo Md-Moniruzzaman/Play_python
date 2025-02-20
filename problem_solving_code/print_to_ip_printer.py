@@ -1,23 +1,33 @@
 from escpos.printer import Network
 
-def print_receipt():
+def print_receipt(order_number):
     try:
         printer = Network("10.168.122.179", 9100)  # Replace with your printer's IP
 
-        # Print image at the top (Use a BMP file instead of ICO)
-        # printer.image(r"D:\Tfl_data_hub\logo_kfc.bmp")  # Replace with your BMP image path
+        # Print KFC Logo (Ensure BMP format)
+        # printer.image(bmp_path)
 
-        # Set alignment to center
-        printer.set(align='center',  bold= True)
+        # Set text alignment to center
+        printer.set(align='center', double_height=True,double_width=True)
+        printer.textln("KFC")
 
-        # Print text in the center
-        printer.text("KFC\n")
-        printer.text("Dine In\n")
-        printer.text("Invoice No. 4456\n")
-        printer.text("Thank you!\n")
+        # Print Order Details
+        printer.text("\n")  # Space after logo
+        printer.set(align='center',  bold=True, double_height=True)
+        printer.text(f"Order Number: ")
+        printer.set(align='center', double_height=True,  double_width=True)
+        printer.text(f"{order_number}\n")
+
+        # Reset text size
+        printer.set(normal_textsize=True)
+        printer.text("Thank You !\n")
+        printer.text("Please check your order status on display screen.\n")
+
+        # Add a footer
+        printer.text("\nPowered by: Transcom Technology\n")
 
         # Add extra space before cutting
-        printer.text("\n" * 3)  # Add 5 blank lines before cutting
+        printer.text("\n" * 2)
 
         # Cut the paper
         printer.cut()
@@ -26,4 +36,5 @@ def print_receipt():
     except Exception as e:
         print(f"Printing failed: {e}")
 
-print_receipt()
+# Example usage
+print_receipt(1932)
