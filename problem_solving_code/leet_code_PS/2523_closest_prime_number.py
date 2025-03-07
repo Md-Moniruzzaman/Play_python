@@ -2,7 +2,7 @@ from typing import List
 import math
 
 class Solution:
-    def closestPrimes(self, left: int, right: int) -> List[int]:
+      def closestPrimes(self, left: int, right: int) -> List[int]:
         def sieve(n):
             """ Returns a boolean list where prime[i] is True if i is prime """
             is_prime = [True] * (n + 1)
