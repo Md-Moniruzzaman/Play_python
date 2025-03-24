@@ -5,20 +5,18 @@
 
 class Solution:
     def countDays(self, days: int, meetings: list[list[int]]) -> int:
-        diff = [0]*(days + 2)
+        meetings.sort()
+        free_day_count = 0
+        last_meeting_day = 0
         
         for s, e in meetings:
-            diff[s] += 1
-            diff[e+1] -= 1
+            if s > last_meeting_day+1:
+                free_day_count+= s-(last_meeting_day+1)
+            last_meeting_day = max(last_meeting_day, e)
         
-        met = 0
-        miss_days_count = 0
-        
-        for i in range(1, days + 1):
-            met+=diff[i]
-            if met == 0:
-                miss_days_count+=1
-        return miss_days_count
+        if last_meeting_day < days:
+            free_day_count += days - last_meeting_day
+        return free_day_count
     
 # Example
 s = Solution()
