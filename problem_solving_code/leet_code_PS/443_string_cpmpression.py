@@ -1,18 +1,33 @@
 class Solution:
     def compress(self, chars: list[str]) -> int:
-        res = ''
-        count = 1
-        ret = 0
-        for i in range(1, len(chars)):
-            if chars[i] == chars[i-1]:
+        # res = ''
+        # count = 1
+        # ret = 0
+        # for i in range(1, len(chars)):
+        #     if chars[i] == chars[i-1]:
+        #         count += 1
+        #     else:
+        #         res += chars[i-1] + str(count) if count > 1 else chars[i-1]
+        #         ret += 2 if count>1 else 1
+        #         count = 1
+        # res += chars[-1] + str(count) if count > 1 else chars[-1]
+        # ret += 2 if count>1 else 1
+        # return ret, list(res)
+        write = 0
+        i = 0
+        while i < len(chars):
+            char = chars[i]
+            count = 0
+            while i < len(chars) and chars[i] == char:
+                i += 1
                 count += 1
-            else:
-                res += chars[i-1] + str(count) if count > 1 else chars[i-1]
-                ret += 2 if count>1 else 1
-                count = 1
-        res += chars[-1] + str(count) if count > 1 else chars[-1]
-        ret += 2 if count>1 else 1
-        return ret, list(res)
+            chars[write] = char
+            write += 1
+            if count > 1:
+                for c in str(count):
+                    chars[write] = c
+                    write += 1
+        return write
         
 # Example usage
 s = Solution()
